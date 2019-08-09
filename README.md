@@ -2,7 +2,7 @@
 A `<Text/>` component for [React Native](https://facebook.github.io/react-native) and [React Native Web](https://github.com/necolas/react-native-web) that automatically detects **#hashtags** and **@mentions**.
 
 <p align="center">
-  <img src="./bin/out.gif" width="456" height="200">
+  <img src="./bin/out.gif" width="456" height="250">
 </p>
 
 ## 🚀 Getting Started
