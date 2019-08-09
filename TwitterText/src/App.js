@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -24,22 +24,28 @@ const styles = StyleSheet
     },
   );
 
-class App extends React.Component {
-  render() {
-    return (
-      <View
-        style={StyleSheet.absoluteFill}
+const App = ({}) => {
+  const [value, onChangeText] = useState('')
+  return (
+    <View
+      style={StyleSheet.absoluteFill}
+    >
+      <TextInput
+        onChangeText={onChangeText}
+        value={value}
+        placeholder="Type some #hashtags or @mentions to get started."
+        multiline
+        numberOfLines={4}
+      />
+      <TwitterTextView
+        style={styles.twitterTextView}
+        hashtagStyle={styles.hashtagStyle}
+        mentionStyle={styles.mentionStyle}
       >
-        <TwitterTextView
-          style={styles.twitterTextView}
-          hashtagStyle={styles.hashtagStyle}
-          mentionStyle={styles.mentionStyle}
-        >
-          {'some text #hashtag @mention'}
-        </TwitterTextView>
-      </View>
-    );
-  }
+        {value}
+      </TwitterTextView>
+    </View>
+  );
 }
 
 let hotWrapper = () => () => App;
