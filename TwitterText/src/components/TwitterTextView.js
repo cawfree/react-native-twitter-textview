@@ -20,9 +20,9 @@ const styles = StyleSheet
     },
   );
 
-const sanitize = (str = '') => str
-  .replace(/#/g, ' #')
-  .replace(/@/g, ' @')
+const sanitize = (str = '', extractHashtags = true, extractMentions = true) => str
+  .replace(/#/g, extractHashtags ? ' #' : '#')
+  .replace(/@/g, extractMentions ? ' @' : '@')
   .replace(/\s\s+/g, ' ');
 
 const TwitterTextView = ({
@@ -38,7 +38,11 @@ const TwitterTextView = ({
   <Text
     {...extraProps}
   >
-    {sanitize(children)
+    {sanitize(
+      children,
+      extractHashtags,
+      extractMentions,
+    )
       .split(' ')
       .map(
         (word, i) => {

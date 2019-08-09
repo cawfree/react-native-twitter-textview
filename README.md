@@ -51,13 +51,13 @@ const App = ({}) => {
 -----
 Prop                  | Type     | Default                   | Required | Description
 --------------------- | -------- | ------------------------- | -------- | -----------
-children|string|''|No|
-extractHashtags|bool|true|No|
-onPressHashtag|func|(e, hashtag) => null|No|
-hashtagStyle|shape[object Object]|styles.linkStyle|No|
-extractMentions|bool|true|No|
-onPressMention|func|(e, hashtag) => null|No|
-mentionStyle|shape[object Object]|styles.linkStyle|No|
+children|string|''|No|The text to render.
+extractHashtags|bool|true|No|Whether you wish to support hashtags.
+onPressHashtag|func|(e, hashtag) => null|No|Called when a detected hashtag is clicked.
+hashtagStyle|shape[object Object]|styles.linkStyle|No|Hashtag style.
+extractMentions|bool|true|No|Whether you wish to support mentions.
+onPressMention|func|(e, hashtag) => null|No|Called when a detected mention is clicked.
+mentionStyle|shape[object Object]|styles.linkStyle|No|Mention style.
 
 ## ✌️ License
 [MIT](https://opensource.org/licenses/MIT)
