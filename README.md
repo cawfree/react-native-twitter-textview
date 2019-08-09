@@ -53,24 +53,10 @@ Prop                  | Type     | Default                   | Required | Descri
 --------------------- | -------- | ------------------------- | -------- | -----------
 children|string|''|No|
 extractHashtags|bool|true|No|
-onPressHashtag|func|(e, hashtag) => {
-  const msg = `Hashtag: "${hashtag}"`;
-  if (Platform.OS !== 'web') {
-    Alert.alert(msg);
-  } else {
-    console.log(msg);
-  }
-}|No|
+onPressHashtag|func|(e, hashtag) => null|No|
 hashtagStyle|shape[object Object]|styles.linkStyle|No|
 extractMentions|bool|true|No|
-onPressMention|func|(e, mention) => {
-  const msg = `Mention: "${mention}"`;
-  if (Platform.OS !== 'web') {
-    Alert.alert(msg);
-  } else {
-    console.log(msg);
-  }
-}|No|
+onPressMention|func|(e, hashtag) => null|No|
 mentionStyle|shape[object Object]|styles.linkStyle|No|
 
 ## ✌️ License
