@@ -1,5 +1,5 @@
 {
-  "name": "@cawfree/react-native-twitter-textview",
+  "name": "react-native-twitter-textview",
   "version": "1.0.0",
   "description": "A <TextView/> component for React Native built on top of twitter-text linkification.",
   "main": "index.js",
@@ -9,5 +9,8 @@
   "private": false,
   "dependencies": {
     "twitter-text": "^3.0.0"
+  },
+  "devDependencies": {
+    "react-markdown-gen": "^0.0.11"
   }
 }
