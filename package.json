@@ -1,0 +1,10 @@
+{
+  "name": "@cawfree/react-native-twitter-textview",
+  "version": "1.0.0",
+  "description": "A <TextView/> component for React Native built on top of twitter-text linkification.",
+  "main": "index.js",
+  "repository": "https://github.com/cawfree/react-native-twitter-textview",
+  "author": "cawfree <hello@cawfree.com>",
+  "license": "MIT",
+  "private": false
+}
