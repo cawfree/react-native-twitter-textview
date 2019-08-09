@@ -25,7 +25,7 @@ const styles = StyleSheet
   );
 
 const App = ({}) => {
-  const [value, onChangeText] = useState('')
+  const [value, onChangeText] = useState('');
   return (
     <View
       style={StyleSheet.absoluteFill}
@@ -33,7 +33,7 @@ const App = ({}) => {
       <TextInput
         onChangeText={onChangeText}
         value={value}
-        placeholder="Type some #hashtags or @mentions to get started."
+        placeholder="Type some #hashtags, @mentions or urls to get started."
         multiline
         numberOfLines={4}
       />

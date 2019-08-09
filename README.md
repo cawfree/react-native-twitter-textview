@@ -22,8 +22,8 @@ yarn add react-native-twitter-textview
 It's super easy; just replace your React Native [`<Text />`](https://facebook.github.io/react-native/docs/text.html) component with a [`<TwitterTextView />`](./TwitterText/src/components/TwitterTextView), and there you go!
 
 ```javascript
-const App = ({}) => {
-  const [value, onChangeText] = useState('')
+const App = () => {
+  const [value, onChangeText] = useState('');
   return (
     <View
       style={StyleSheet.absoluteFill}
@@ -39,6 +39,7 @@ const App = ({}) => {
         style={styles.twitterTextView}
         hashtagStyle={styles.hashtagStyle}
         mentionStyle={styles.mentionStyle}
+        linkStyle={styles.linkStyle}
       >
         {value}
       </TwitterTextView>
@@ -58,6 +59,9 @@ hashtagStyle|shape[object Object]|styles.linkStyle|No|Hashtag style.
 extractMentions|bool|true|No|Whether you wish to support mentions.
 onPressMention|func|(e, hashtag) => null|No|Called when a detected mention is clicked.
 mentionStyle|shape[object Object]|styles.linkStyle|No|Mention style.
+extractLinks|bool|true|No|Whether you wish to support links.
+onPressLink|func|(e, link) => Linking.openURL(link)|No|Called when a detected link is clicked.
+linkStyle|shape[object Object]|styles.linkStyle|No|Link style.
 
 ## ✌️ License
 [MIT](https://opensource.org/licenses/MIT)

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Linking,
   Platform,
   Text,
   StyleSheet,
@@ -10,6 +11,7 @@ import {
   extractHashtags as shouldExtractHashtags,
   extractMentions as shouldExtractMentions,
 } from 'twitter-text';
+import { test as isHyperlink } from 'linkifyjs';
 
 const styles = StyleSheet
   .create(
@@ -33,78 +35,93 @@ const TwitterTextView = ({
   extractMentions,
   onPressMention,
   mentionStyle,
+  extractLinks,
+  onPressLink,
+  linkStyle,
   ...extraProps,
-}) => (
-  <Text
-    {...extraProps}
-  >
-    {sanitize(
-      children,
-      extractHashtags,
-      extractMentions,
-    )
-      .split(' ')
-      .map(
-        (word, i) => {
-          const pfx = (i > 0) ? ' ' : '';
-          if (extractHashtags) {
-            const [ hashtag ] = shouldExtractHashtags(
-              word,
-            ) || [];
-            if (hashtag) {
-              const result = `${pfx}#${hashtag}`;
-              const after = `${word.substring(hashtag.length + 1)}`;
+}) => {
+  return (
+    <Text
+      {...extraProps}
+    >
+      {sanitize(
+        children,
+        extractHashtags,
+        extractMentions,
+      )
+        .split(' ')
+        .map(
+          (word, i) => {
+            const pfx = (i > 0) ? ' ' : '';
+            if (extractLinks && isHyperlink(word)) {
               return (
                 <Text
+                  onPress={e => onPressLink(e, word)}
+                  style={linkStyle}
                 >
-                  <Text
-                    onPress={e => onPressHashtag(e, hashtag)}
-                    style={hashtagStyle}
-                  >
-                    {`${result}`}
-                  </Text>
-                  <Text
-                  >
-                    {`${after}`}
-                  </Text>
+                  {`${pfx}${word}`}
                 </Text>
               );
             }
-          }
-          if (extractMentions) {
-            const [ mention ] = shouldExtractMentions(
-              word,
-            ) || [];
-            if (mention) {
-              const result = `${pfx}@${mention}`;
-              const after = `${word.substring(mention.length + 1)}`;
-              return (
-                <Text
-                >
-                  <Text
-                    onPress={e => onPressMention(e, mention)}
-                    style={mentionStyle}
-                  >
-                    {`${result}`}
-                  </Text>
+            if (extractHashtags) {
+              const [ hashtag ] = shouldExtractHashtags(
+                word,
+              ) || [];
+              if (hashtag) {
+                const result = `${pfx}#${hashtag}`;
+                const after = `${word.substring(hashtag.length + 1)}`;
+                return (
                   <Text
                   >
-                    {`${after}`}
+                    <Text
+                      onPress={e => onPressHashtag(e, hashtag)}
+                      style={hashtagStyle}
+                    >
+                      {`${result}`}
+                    </Text>
+                    <Text
+                    >
+                      {`${after}`}
+                    </Text>
                   </Text>
-                </Text>
-              );
+                );
+              }
             }
-          }
-          return (
-            <Text
-            >
-              {`${pfx}${word}`}
-            </Text>
-          );
-        },
-      )}
-  </Text>
-);
+            if (extractMentions) {
+              const [ mention ] = shouldExtractMentions(
+                word,
+              ) || [];
+              if (mention) {
+                const result = `${pfx}@${mention}`;
+                const after = `${word.substring(mention.length + 1)}`;
+                return (
+                  <Text
+                  >
+                    <Text
+                      onPress={e => onPressMention(e, mention)}
+                      style={mentionStyle}
+                    >
+                      {`${result}`}
+                    </Text>
+                    <Text
+                    >
+                      {`${after}`}
+                    </Text>
+                  </Text>
+                );
+              }
+            }
+            return (
+              <Text
+              >
+                {`${pfx}${word}`}
+              </Text>
+            );
+          },
+        )}
+    </Text>
+  );
+};
 
 TwitterTextView.propTypes = {
   children: PropTypes.string,
@@ -114,6 +131,9 @@ TwitterTextView.propTypes = {
   extractMentions: PropTypes.bool,
   onPressMention: PropTypes.func,
   mentionStyle: PropTypes.shape({}),
+  extractLinks: PropTypes.bool,
+  onPressLink: PropTypes.func,
+  linkStyle: PropTypes.shape({}),
 };
 
 TwitterTextView.defaultProps = {
@@ -138,6 +158,10 @@ TwitterTextView.defaultProps = {
     }
   },
   mentionStyle: styles.linkStyle,
+  extractLinks: true,
+  onPressLink: (e, url) => Linking.canOpenURL(url)
+    .then(canOpen => (!!canOpen) && Linking.openURL(url)),
+  linkStyle: styles.linkStyle,
 };
 
 export default TwitterTextView;
