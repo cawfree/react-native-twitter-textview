@@ -38,7 +38,7 @@ const TwitterTextView = ({
   extractLinks,
   onPressLink,
   linkStyle,
-  ...extraProps,
+  ...extraProps
 }) => {
   return (
     <Text
