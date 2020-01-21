@@ -1,17 +1,28 @@
 {
   "name": "react-native-twitter-textview",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A <TextView/> component for React Native built on top of twitter-text linkification.",
-  "main": "index.js",
+  "main": "dist",
   "repository": "https://github.com/cawfree/react-native-twitter-textview",
   "author": "cawfree <hello@cawfree.com>",
   "license": "MIT",
   "private": false,
-  "dependencies": {
-    "linkifyjs": "^2.1.8",
-    "twitter-text": "^3.0.0"
+  "scripts": {
+    "build": "babel src --out-dir dist && uglifyjs dist/*.js -o dist/*.js",
+    "prettify": "yarn prettier ./src/* --write",
+    "test": "jest"
   },
   "devDependencies": {
-    "react-markdown-gen": "^0.0.11"
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "husky": "^4.1.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-native": "^0.61.5",
+    "uglify-js": "^3.7.6"
   }
 }

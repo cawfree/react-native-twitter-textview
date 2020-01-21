@@ -1,3 +1,0 @@
-rootProject.name = 'TwitterText'
-
-include ':app'

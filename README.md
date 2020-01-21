@@ -1,6 +1,8 @@
 # react-native-twitter-textview
 A `<Text/>` component for [React Native](https://facebook.github.io/react-native) and [React Native Web](https://github.com/necolas/react-native-web) that automatically detects **#hashtags** and **@mentions**.
 
+<a href="#badge"><img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"></a>
+
 <p align="center">
   <img src="./bin/out.gif" width="600" height="164">
 </p>
@@ -40,6 +42,7 @@ const App = () => {
         hashtagStyle={styles.hashtagStyle}
         mentionStyle={styles.mentionStyle}
         linkStyle={styles.linkStyle}
+        emailStyle={styles.emailStyle}
       >
         {value}
       </TwitterTextView>
@@ -62,6 +65,9 @@ mentionStyle|shape[object Object]|styles.linkStyle|No|Mention style.
 extractLinks|bool|true|No|Whether you wish to support links.
 onPressLink|func|(e, link) => Linking.openURL(link)|No|Called when a detected link is clicked.
 linkStyle|shape[object Object]|styles.linkStyle|No|Link style.
+extractEmails|bool|true|No|Whether you wish to support emails.
+onPressEmail|func|(e, link) => Linking.openURL(link)|No|Called when a detected email is clicked.
+emailStyle|shape[object Object]|styles.linkStyle|No|Email style.
 
 ## ✌️ License
 [MIT](https://opensource.org/licenses/MIT)
