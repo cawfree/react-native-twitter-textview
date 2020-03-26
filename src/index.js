@@ -89,7 +89,7 @@ const TwitterTextView = ({
           <Text
             key={i}
             style={style[pattern]}
-            onPress={e => onPress[pattern](e, str)}
+            onPress={e => pattern && onPress[pattern](e, str)}
             children={str}
           />
         );
