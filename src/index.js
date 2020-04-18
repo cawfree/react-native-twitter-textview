@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import unicode from "unicode-regex";
 import { Linking, Platform, Text, StyleSheet, Alert } from "react-native";
 
 const styles = StyleSheet.create({
@@ -8,8 +9,19 @@ const styles = StyleSheet.create({
   }
 });
 
-const PATTERN_HASHTAG = /(^|\s)(#[a-z\d-]+)/gi;
-const PATTERN_MENTION = /(^|\s)(@[a-z\d-]+)/gi;
+const uni = unicode({ General_Category: ['Letter'] }).toRegExp().toString();
+const letters = uni.substring(1, uni.length - 1);
+
+const PATTERN_HASHTAG = new RegExp(
+  `(^|\\s)(#[a-z\\d-]+)`,
+  'gi',
+);
+
+const PATTERN_MENTION = new RegExp(
+  `(^|\\s)(@[a-z\\d-]+)`,
+  'gi',
+);
+
 const PATTERN_EMAIL = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
 const PATTERN_URL = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
 
