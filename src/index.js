@@ -9,16 +9,18 @@ const styles = StyleSheet.create({
   }
 });
 
-const uni = unicode({ General_Category: ['Letter'] }).toRegExp().toString();
-const letters = uni.substring(1, uni.length - 1);
+const letters = unicode({ General_Category: ['Letter'] })
+  .toRegExp()
+  .toString()
+  .substring(1, uni.length - 1);
 
 const PATTERN_HASHTAG = new RegExp(
-  `(^|\\s)(#[a-z\\d-]+)`,
+  `[#](?:${letters})+`,
   'gi',
 );
 
 const PATTERN_MENTION = new RegExp(
-  `(^|\\s)(@[a-z\\d-]+)`,
+  `[@](?:${letters})+`,
   'gi',
 );
 
