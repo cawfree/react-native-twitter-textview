@@ -1,12 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import unicode from "unicode-regex";
-import { Linking, Platform, Text, StyleSheet, Alert } from "react-native";
+import { View, Linking, Platform, Text, TextInput, StyleSheet, Alert } from "react-native";
 
 const styles = StyleSheet.create({
+  flex: {
+    display: 'flex',
+    flex: 1,
+  },
   linkStyle: {
     color: "#2980b9"
-  }
+  },
+  textInput: {
+    color: "transparent",
+  },
 });
 
 const uni = unicode({ General_Category: ['Letter', 'Number'] })
@@ -170,4 +177,34 @@ TwitterTextView.defaultProps = {
       canOpen => !!canOpen && Linking.openURL(`mailto:${url}`)
     ),
   emailStyle: styles.linkStyle
+};
+
+export const TwitterTextInput = React.forwardRef(
+  ({ value, onChangeText, ...extraProps }, ref) => (
+    <View
+      style={styles.flex}
+    >
+      <TwitterTextView
+        {...extraProps}
+        children={value}
+      />
+      <TextInput
+        ref={ref}
+        style={[
+          StyleSheet.absoluteFill,
+          styles.textInput,
+        ]}
+        value={value}
+        onChangeText={onChangeText}
+      />
+    </View>
+  ),
+);
+
+TwitterTextInput.propTypes ={
+  ...TwitterTextView.propTypes,
+};
+
+TwitterTextInput.defaultProps ={
+  ...TwitterTextView.defaultProps,
 };
