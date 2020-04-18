@@ -17,12 +17,12 @@ const letters = uni
   .substring(1, uni.length - 1);
 
 const PATTERN_HASHTAG = new RegExp(
-  `[#](?:${letters})+`,
+  `[#](?:${letters}|_)+`,
   'gi',
 );
 
 const PATTERN_MENTION = new RegExp(
-  `[@](?:${letters})+`,
+  `[@](?:${letters}|_)+`,
   'gi',
 );
 
