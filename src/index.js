@@ -9,9 +9,11 @@ const styles = StyleSheet.create({
   }
 });
 
-const letters = unicode({ General_Category: ['Letter'] })
+const uni = unicode({ General_Category: ['Letter', 'Number'] })
   .toRegExp()
   .toString()
+
+const letters = uni
   .substring(1, uni.length - 1);
 
 const PATTERN_HASHTAG = new RegExp(
