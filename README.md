@@ -20,6 +20,16 @@ Using [`yarn`](https://www.npmjs.com/package/react-native-twitter-textview):
 yarn add react-native-twitter-textview
 ```
 
+## Breaking Changes
+
+### 1.1.0
+  - The TwitterTextView is no longer the `default` export for the module.
+
+```diff
+- import TwitterTextView from "react-native-twitter-textview";
++ import { TwitterTextView } from "react-native-twitter-textview";
+```
+
 ## ✍️ Usage
 It's super easy; just replace your React Native [`<Text />`](https://facebook.github.io/react-native/docs/text.html) component with a [`<TwitterTextView />`](./TwitterText/src/components/TwitterTextView), and there you go!
 

@@ -55,7 +55,7 @@ const splitStringByMatches = (str, matches) => {
   return arr.filter(([s]) => s.length > 0);
 };
 
-const TwitterTextView = ({
+export const TwitterTextView = ({
   children = "",
   extractHashtags,
   onPressHashtag,
@@ -171,5 +171,3 @@ TwitterTextView.defaultProps = {
     ),
   emailStyle: styles.linkStyle
 };
-
-export default TwitterTextView;
