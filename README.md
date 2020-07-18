@@ -51,6 +51,8 @@ const App = () => {
 }
 ```
 
+Are you looking for a similar component for tagged `<TextInput/>`? If so, please check out [**react-native-segmented-text-input**](https://github.com/cawfree/react-native-segmented-text-input).
+
 ## 📋 Props
 -----
 Prop                  | Type     | Default                   | Required | Description
