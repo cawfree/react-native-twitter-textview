@@ -8,21 +8,21 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "babel src --out-dir dist && uglifyjs dist/*.js -o dist/*.js",
+    "build": "yarn && babel src --out-dir dist && rm -rf node_modules",
     "prettify": "yarn prettier ./src/* --write",
     "test": "jest"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.3",
-    "@babel/core": "^7.8.3",
-    "@babel/polyfill": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
-    "@babel/preset-react": "^7.8.3",
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.6",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
     "husky": "^4.1.0",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
-    "react-native": "^0.61.5",
-    "uglify-js": "^3.7.6"
+    "react-native": "^0.61.5"
   }
 }
