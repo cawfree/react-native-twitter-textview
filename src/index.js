@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const PATTERN_HASHTAG = /(^|\s)(#[a-z\d-_]+)/gi;
+const PATTERN_HASHTAG = /(^|\s)(#[a-z\d-_\u0621-\u064A\u0660-\u0669\u067e\u0686\u0689\u06af\u06cc\u06a9]+)/gi;
 const PATTERN_MENTION = /(^|\s)(@[a-z\d-_]+)/gi;
 const PATTERN_EMAIL = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
 const PATTERN_URL = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
